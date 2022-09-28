@@ -6,6 +6,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import lombok.SneakyThrows;
+import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.file.FileSystems;
@@ -14,6 +15,7 @@ import java.nio.file.Path;
 /**
  * @author * Sunnatullayev Mahmudnazar *  * qrCodeGenerate *  * 10:03 *
  */
+@Component
 public class QRCodeGenerator {
 
     @SneakyThrows
@@ -34,7 +36,6 @@ public class QRCodeGenerator {
         MatrixToImageConfig con = new MatrixToImageConfig(  -16777216 ,-1 ) ;
 
         MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream,con);
-        byte[] pngData = pngOutputStream.toByteArray();
-        return pngData;
+        return pngOutputStream.toByteArray();
     }
 }
